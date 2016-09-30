@@ -1,0 +1,1 @@
+  https://atlas.hashicorp.com/puphpet/boxes/centos65-x64/versions/20151130/providers/virtualbox.box

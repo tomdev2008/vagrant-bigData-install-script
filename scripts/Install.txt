@@ -1,0 +1,27 @@
+﻿1.      ./setup-centos.sh  关闭防火墙 ,设置ssh
+2.      ./setup-java.sh    安装jdk scala  maven
+3.      ./setup-zookeeper.sh   安装zookeeper  后面要输入 1  2   3
+4.      ./setup-kafka.sh    安装kafka
+5.      ./setup-hadoop.sh   安装 hadoop
+6.      ./setup-spark.sh    安装spark
+
+
+7.启动zookeeper
+cd /get/soft/zookeeper-3.4.7/bin/
+./zkServer.sh start   启动
+./zkServer.sh status  状态 一个leader  两个follower
+
+
+8.启动journalnode
+cd /get/soft/hadoop-2.6.3/sbin/
+./hadoop-daemon.sh start journalnode
+jps  查看会有JournalNode进程
+
+
+9.格式化HDFS
+
+
+
+格式化hdfs:
+
+

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration> 
+    <property> 
+       <name>javax.jdo.option.ConnectionDriverName</name> 
+       <value>com.mysql.jdbc.Driver</value> 
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionURL</name>
+        <value>jdbc:mysql://11.11.11.14:3306/hive?characterEncoding=utf8&amp;useSSL=true</value>
+        <description>JDBC connect string for a JDBC metastore</description>
+    </property>
+    <property> 
+       <name>javax.jdo.option.ConnectionUserName</name> 
+       <value>root</value> 
+    </property>
+      <property> 
+       <name>javax.jdo.option.ConnectionPassword</name> 
+       <value>1234</value> 
+    </property>
+    <property>  
+  <name>hive.hwi.listen.host</name>  
+  <value>0.0.0.0</value>  
+  <description>This is the host address the Hive Web Interface will listen on</description>  
+</property>
+<property>  
+  <name>hive.hwi.listen.port</name>  
+  <value>9999</value>  
+  <description>This is the port the Hive Web Interface will listen on</description>  
+</property>  
+  
+<!-- configure hwi war package location -->  
+<property>  
+  <name>hive.hwi.war.file</name>  
+  <value>lib/hive-hwi-2.1.0.war</value>  
+  <description>This is the WAR file with the jsp content for Hive Web Interface</description>  
+</property>  
+<!-- <property> 
+  <name>spark.home</name> 
+  <value>/get/soft/spark-1.6.0-bin-hadoop2.6</value>
+</property> -->
+
+<!--  Hive HA -->
+  
+  <property>
+<name>hive.server2.support.dynamic.service.discovery</name>
+<value>true</value>
+</property>
+ 
+<property>
+<name>hive.server2.zookeeper.namespace</name>
+<value>hiveserver2_zk</value>
+</property>
+ 
+<property>
+<name>hive.zookeeper.quorum</name>
+<value>11.11.11.11:2181,11.11.11.12:2181,11.11.11.13:2181</value>
+</property>
+ 
+<property>
+<name>hive.zookeeper.client.port</name>
+<value>2181</value>
+</property>
+<property>
+  <name>hive.zookeeper.session.timeout</name>
+  <value>60000</value>
+</property>
+ 
+ <!-- 该值默认为localhost，如果需要在其它机器远程访问Hive，则需要将它改成IP地址，本文将它改成 --> 
+<property>
+<name>hive.server2.thrift.bind.host</name>
+<value>11.11.11.11</value>
+</property>
+ 
+<property>
+<name>hive.server2.thrift.port</name>
+<value>10001</value> 
+<!-- 两个HiveServer2实例的端口号要一致 -->
+</property>
+<property>
+  <name>hive.server2.thrift.max.worker.threads</name>
+  <value>10240</value>
+</property>
+</configuration>

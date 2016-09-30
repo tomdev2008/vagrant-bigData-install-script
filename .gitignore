@@ -1,0 +1,14 @@
+.vagrant
+boxes/
+data/
+gems/
+rgloader/
+VM/
+*.msi
+*.tar
+*.tar.gz
+*.tar.gz.bak
+*.exe
+*.tgz
+/vm
+VM

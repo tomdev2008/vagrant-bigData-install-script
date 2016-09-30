@@ -59,6 +59,13 @@ HBASE_ARCHIVE=$HBASE_VERSION-bin.tar.gz
 HBASE_RES_DIR=/vagrant/resources/hbase
 HBASE_CONF=/get/soft/$HBASE_VERSION/conf
 
+#flume   apache-flume-1.6.0-bin.tar.gz
+FLUME_VERSION=flume-1.6.0
+FLUME_ARCHIVE=$FLUME_VERSION-bin.tar.gz
+FLUME_RES_DIR=/vagrant/resources/flume
+#FLUME_CONF=/get/soft/$FLUME_VERSION/conf
+
+
 #spark
 #spark-1.6.0-bin-hadoop2.6
 #SPARK_VERSION=spark-1.5.2

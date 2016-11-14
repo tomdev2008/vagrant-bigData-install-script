@@ -8,6 +8,9 @@
 
 
 #采取离线安装方式，所以。你需要去下载扩展包到本地，覆盖resources
+
+链接: https://pan.baidu.com/s/1hsNVZKC 密码: s3fg
+
 #采取自选择安装方式，并不是所有软件都需要安装上
 
 0. ssh

@@ -1,10 +1,8 @@
 #!/bin/bash
-# http://unix.stackexchange.com/questions/59003/why-ssh-copy-id-prompts-for-the-local-user-password-three-times
-# http://linuxcommando.blogspot.com/2008/10/how-to-disable-ssh-host-key-checking.html
-# http://linuxcommando.blogspot.ca/2013/10/allow-root-ssh-login-with-public-key.html
-# http://stackoverflow.com/questions/12118308/command-line-to-execute-ssh-with-password-authentication
-# http://www.cyberciti.biz/faq/noninteractive-shell-script-ssh-password-provider/
+
 source "/vagrant/scripts/common.sh"
+set -x
+
 START=3
 TOTAL_NODES=4
 
@@ -28,7 +26,7 @@ function disableFirewall {
 
 
 function installSSHPass {
-	echo "wget sshpass库" 
+	echo "wget sshpass库"
  	# yum -y install sshpass
  	# http://pkgs.repoforge.org/sshpass/
  	rpm -ivh $SSHPASS_DIR_PATH
@@ -47,7 +45,7 @@ function setupHosts {
 	echo  "11.11.11.14 test" >> /etc/hosts
 	#echo   "127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4" >> /etc/nhosts
 	#echo   "::1         localhost localhost.localdomain localhost6 localhost6.localdomain6" >> /etc/nhosts
-	 
+
 }
 
 function createSSHKey {
@@ -58,23 +56,23 @@ function createSSHKey {
 }
 
 function sshCopyId {
-    
-	 echo "开始拷贝" 
-     
-     echo "开始拷贝 node1" 
+
+	 echo "开始拷贝"
+
+     echo "开始拷贝 node1"
 	 ssh-copy-id -i ~/.ssh/id_rsa.pub node1
-     
-     echo "开始拷贝 node2" 
+
+     echo "开始拷贝 node2"
 	 ssh-copy-id -i ~/.ssh/id_rsa.pub node2
-     
-     echo "开始拷贝 node3" 
-	 
+
+     echo "开始拷贝 node3"
+
      ssh-copy-id -i ~/.ssh/id_rsa.pub node3
-     
-     echo "开始拷贝 node4" 
-	 
+
+     echo "开始拷贝 node4"
+
      ssh-copy-id -i ~/.ssh/id_rsa.pub test
-     
+
 }
 
 function setupUtilities {
@@ -83,8 +81,17 @@ function setupUtilities {
     updatedb
 }
 
+# function installZsh {
+ 	  # yum -y install zsh
+		# tar -xzf /vagrant/resources/zsh-5.2.tar.gz -C /get/soft
+# }
 
-echo "关闭防火墙" 
+# function installOhMyZsh {
+#
+# }
+
+
+echo "关闭防火墙"
 disableFirewall
 
 echo "开始设置ssh  要设置多次,貌似才起效"
@@ -97,5 +104,11 @@ sshCopyId
 
 echo "setup utilities"
  # setupUtilities
+
+echo "install zsh"
+# installZsh
+# installOhMyZsh
+
+
 
 echo "centos setup complete"

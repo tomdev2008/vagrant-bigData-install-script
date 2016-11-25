@@ -1,10 +1,11 @@
 #!/bin/bash
 source "/vagrant/scripts/common.sh"
+set -x
 
 function installSpark {
 	echo "安装本地spark"
 	FILE=/vagrant/resources/$SPARK_ARCHIVE
-	tar -xzf $FILE -C /get/soft 
+	tar -xzf $FILE -C /get/soft
 }
 
 function setupSpark {

@@ -19,7 +19,7 @@ MAVEN_DIR_PATH=/get/soft/apache-maven-3.3.9
 #scala
 Scala_ARCHIVE=scala-2.10.5.tgz
 Scala_DIR_PATH=/get/soft/scala-2.10.5
- 
+
 #hadoop
 HADOOP_VERSION=hadoop-2.6.3
 HADOOP_ARCHIVE=$HADOOP_VERSION.tar.gz
@@ -45,12 +45,12 @@ ZOOKEEPER_ARCHIVE=$ZOOKEEPER_VERSION.tar.gz
 ZOOKEEPER_RES_DIR=/vagrant/resources/zookeeper
 ZOOKEEPER_CONF_DIR=/get/soft/$ZOOKEEPER_VERSION/conf
 ZOOKEEPER_DATA_DIR=/get/soft/$ZOOKEEPER_VERSION/zookeeper_data
- 
+
 
 #kafka
-KAFKA_VERSION=kafka_2.11-0.8.2.2
+KAFKA_VERSION=kafka_2.11-0.10.0.0
 KAFKA_ARCHIVE=$KAFKA_VERSION.tgz
-KAFKA_RES_DIR=/vagrant/resources/kafka 
+KAFKA_RES_DIR=/vagrant/resources/kafka
 KAFKA_CONF=/get/soft/$KAFKA_VERSION/config
 
 #Hase
@@ -59,9 +59,10 @@ HBASE_ARCHIVE=$HBASE_VERSION-bin.tar.gz
 HBASE_RES_DIR=/vagrant/resources/hbase
 HBASE_CONF=/get/soft/$HBASE_VERSION/conf
 
-#flume   apache-flume-1.6.0-bin.tar.gz
+#flume   apache-flume-1.6.0-bin.tar.gz  apache-flume-1.6.0-bin
 FLUME_VERSION=flume-1.6.0
-FLUME_ARCHIVE=$FLUME_VERSION-bin.tar.gz
+FLUME_DIR_PATH=apache-$FLUME_VERSION-bin
+FLUME_ARCHIVE=$FLUME_DIR_PATH.tar.gz
 FLUME_RES_DIR=/vagrant/resources/flume
 #FLUME_CONF=/get/soft/$FLUME_VERSION/conf
 

@@ -1,6 +1,7 @@
 #!/bin/bash
 source "/vagrant/scripts/common.sh"
 
+set -x
 
 function installLocalMySql {
 	echo "installing mysql"
@@ -11,14 +12,14 @@ function installLocalMySql {
 	tar -xzf $FILE -C /get/soft/
 	mv $MYSQL_HOME_DIR_PATH_BEFORE $MYSQL_HOME_DIR_PATH
 }
- 
+
 function copyMyConf
-{ 
+{
 	echo "拷贝  mysql my.conf 配置文件 "
 	cp -f $MYSQL_RES_DIR/* /etc/
 	cp -f $MYSQL_HOME_DIR_PATH/support-files/mysql.server /etc/init.d/mysqlId
 }
- 
+
 
 function initMysql
 {
@@ -27,9 +28,9 @@ function initMysql
 	 chown -R mysql $MYSQL_DATA_DIR_PATH
 
     echo "init  mysql  data  "
-    $MYSQL_HOME_DIR_PATH/bin/mysql_install_db --basedir=$MYSQL_HOME_DIR_PATH --datadir=$MYSQL_DATA_DIR_PATH --user=mysql 
+    $MYSQL_HOME_DIR_PATH/bin/mysql_install_db --basedir=$MYSQL_HOME_DIR_PATH --datadir=$MYSQL_DATA_DIR_PATH --user=mysql
 ## 或者下面的语句，记者多删除 mysql /data的初始化文件。
-##  $MYSQL_HOME_DIR_PATH/bin/mysqld --initialize --basedir=$MYSQL_HOME_DIR_PATH --datadir=$MYSQL_DATA_DIR_PATH --user=mysql 
+##  $MYSQL_HOME_DIR_PATH/bin/mysqld --initialize --basedir=$MYSQL_HOME_DIR_PATH --datadir=$MYSQL_DATA_DIR_PATH --user=mysql
 }
 
 function startMysql
@@ -51,9 +52,9 @@ function setMySqlPSW
 
 echo "setup mysql"
 
- installLocalMySql 
- copyMyConf 
- initMysql 
+ installLocalMySql
+ copyMyConf
+ initMysql
  startMysql
  setMySqlPSW
 
@@ -68,10 +69,10 @@ echo "setup mysql"
 
 
 
- 
+
 
 #http://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html
 # /etc/init.d/mysqlId  start  --skip-grant-tables
 # mysql> FLUSH PRIVILEGES;
 # mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass';
-# 
+#

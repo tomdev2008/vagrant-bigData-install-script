@@ -1,12 +1,13 @@
 #!/bin/bash
 source "/vagrant/scripts/common.sh"
+set -x
 
 function installLocalJava {
 	echo "installing oracle jdk"
 	FILE=/vagrant/resources/$JAVA_ARCHIVE
 	tar -xzf $FILE -C /get/soft
 }
- 
+
 function setupJavaEnvVars {
 	echo "creating java environment variables"
 	echo export JAVA_HOME=$JAVA_HOME_DIR_PATH >> /etc/profile
@@ -22,7 +23,7 @@ function installJava {
 	mkdir -p /get/script
 	mkdir -p /get/app
 	mkdir -p /get/server
-	
+
 	if resourceExists $JAVA_ARCHIVE; then
 	echo "开始安装Java"
 		installLocalJava
@@ -40,11 +41,11 @@ function installScala
 }
 function setupScalaEnvVars
 {
-   echo "设置 Scala 的环境变量" 
+   echo "设置 Scala 的环境变量"
    echo export SCALA_HOME=$Scala_DIR_PATH >> /etc/profile
    echo export PATH=\${SCALA_HOME}/bin:\${PATH} >> /etc/profile
 }
- 
+
 function installMaven {
 	echo "安装maven"
 	FILE=/vagrant/resources/$MAVEN_ARCHIVE
@@ -66,9 +67,8 @@ setupJavaEnvVars
 
 installScala
 setupScalaEnvVars
-echo "设置完毕.请刷新 source /etc/profile" 
+echo "设置完毕.请刷新 source /etc/profile"
 
 echo "setup maven"
 installMaven
 setupMavenEnvVars
-

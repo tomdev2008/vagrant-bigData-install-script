@@ -1,12 +1,13 @@
 #!/bin/bash
 source "/vagrant/scripts/common.sh"
+set -x
 
 function installKafka {
 	echo "安装 kafka"
 	FILE=/vagrant/resources/$KAFKA_ARCHIVE
 	tar -xzf $FILE -C /get/soft
 }
- 
+
 function setupKafka {
 	echo "拷贝kafka配置文件"
     # mkdir $HADOOP_CONF
@@ -21,9 +22,9 @@ function setupEnvVars {
      echo export PATH=\${KAFKA_PREFIX}/bin:\${PATH} >> /etc/profile
 }
 
- 
+
  #ln -s /usr/local/$KAFKA_VERSION /usr/local/kafka
- 
+
 
 echo "setup kafka"
 installKafka

@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# http://www.cloudera.com/content/cloudera/en/documentation/cdh4/v4-2-0/CDH4-Installation-Guide/cdh4ig_topic_18_4.html
+set -x
 
 source "/vagrant/scripts/common.sh"
 
 function installHive {
  	FILE=/vagrant/resources/$HIVE_ARCHIVE
 	tar -xzf $FILE -C /get/soft
-	
- 	mkdir $HIVE_DIR_PATH/logs 
- 	mkdir $HIVE_DIR_PATH/logs/exec 
+
+ 	mkdir $HIVE_DIR_PATH/logs
+ 	mkdir $HIVE_DIR_PATH/logs/exec
 	mkdir $HIVE_DIR_PATH/derby/
 }
-  
+
 function setupHive {
 	echo "拷贝配置文件"
 	cp -f $HIVE_RES_DIR/* $HIVE_CONF
@@ -21,10 +21,10 @@ function setupHive {
 }
 
 function setupEnvVars {
-	 
+
 	echo export HIVE_HOME=$HIVE_DIR_PATH  >> /etc/profile
 	echo export HIVE_CONF_DIR=$HIVE_CONF  >> /etc/profile
-    echo export PATH=\${HIVE_HOME}/bin:\${PATH} >> /etc/profile 
+    echo export PATH=\${HIVE_HOME}/bin:\${PATH} >> /etc/profile
 }
 
 function runHiveServices {
@@ -48,7 +48,7 @@ function initHiveSchema
 
 # 拷贝mysql驱动 到 lib文件夹里面
 # 写入mysql 链接地址，以及配置hadoop 目录
- 
+
 echo "安装 hive"
 
 installHive

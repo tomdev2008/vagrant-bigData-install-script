@@ -1,5 +1,6 @@
 #!/bin/bash
 source "/vagrant/scripts/common.sh"
+set -x
 
 function installHBase {
 	echo "安装本地HBase"
@@ -12,7 +13,7 @@ function setupHBase {
 	cp -f /vagrant/resources/hbase/regionservers $HBASE_CONF
 	cp -f /vagrant/resources/hbase/hbase-env.sh $HBASE_CONF
     cp -f /vagrant/resources/hbase/hbase-site.xml $HBASE_CONF
-    cp -f /vagrant/resources/hbase/core-site.xml $HBASE_CONF 
+    cp -f /vagrant/resources/hbase/core-site.xml $HBASE_CONF
     cp -f /vagrant/resources/hbase/hdfs-site.xml $HBASE_CONF
 
 }
@@ -23,6 +24,6 @@ function setupEnvVars {
     echo export PATH=\${HBASE_HOME}/bin:\${PATH} >> /etc/profile
 }
 
-installHBase 
+installHBase
 setupHBase
 setupEnvVars

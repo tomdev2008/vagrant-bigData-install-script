@@ -1,5 +1,6 @@
 #!/bin/bash
 source "/vagrant/scripts/common.sh"
+set -x
 
 function installHadoop {
 	mkdir -p /get/soft
@@ -7,7 +8,7 @@ function installHadoop {
 	FILE=/vagrant/resources/$HADOOP_ARCHIVE
 	tar -xzf $FILE -C /get/soft
 }
- 
+
 function setupHadoop {
 	echo "创建 hadoop 目录"
 	mkdir -p /var/hadoop
@@ -20,14 +21,14 @@ function setupHadoop {
 	mkdir -p $HADOOP_RES_DIR
 
 	echo "拷贝  hadoop 配置文件 "
- 
+
 
 	cp -f $HADOOP_RES_DIR/* $HADOOP_CONF
 }
 
 function setupEnvVars {
 	echo "创建 hadoop 环境变量"
-    
+
      echo   export HADOOP_PREFIX=/get/soft/$HADOOP_VERSION >> /etc/profile
      echo   export HADOOP_HOME=/get/soft/$HADOOP_VERSION >> /etc/profile
      echo   export HADOOP_YARN_HOME=\${HADOOP_PREFIX} >> /etc/profile
